@@ -27,57 +27,58 @@ const SITE_CONFIG = {
   }
   document.getElementById('year').textContent = new Date().getFullYear();
 
+
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const section = document.querySelector('.input-section');
-  let observers = [];
+  const words = [...document.querySelectorAll('.input-word')];
+  const stages = [...document.querySelectorAll('.process-list li')];
+  const animated = [...words, ...stages];
+  let observer;
   let frame = 0;
-  let watchingInput = false;
-
-  function updateNetwork() {
+  const clamp = value => Math.min(1, Math.max(0, value));
+  function update() {
     frame = 0;
-    if (!watchingInput || reducedMotion.matches) return;
+    const height = innerHeight;
     const rect = section.getBoundingClientRect();
-    const progress = Math.min(1, Math.max(0, -rect.top / Math.max(1, rect.height - innerHeight)));
-    section.style.setProperty('--converge', progress.toFixed(3));
+    if (rect.bottom > 0 && rect.top < height) {
+      section.style.setProperty('--network-turn', (clamp(-rect.top / Math.max(1, rect.height-height))*100)+'deg');
+    }
+    animated.forEach(element => {
+      const box = element.getBoundingClientRect();
+      if (box.bottom < -height*.3 || box.top > height*1.3) return;
+      const position = (box.top + box.height/2-height*.5)/(height*.5);
+      // A wide, still reading window; entrance and exit follow scroll position.
+      const distance = Math.max(0, Math.abs(position)-.28);
+      const amount = Math.min(1, distance/.95);
+      const direction = Math.sign(position);
+      element.style.setProperty('--motion-y', (direction*amount*95)+'px');
+      element.style.setProperty('--motion-angle', (direction*amount*-55)+'deg');
+      element.style.setProperty('--motion-opacity', Math.max(.08,1-amount).toFixed(3));
+      element.classList.toggle('is-active', Math.abs(position)<.65);
+    });
   }
-  function onScroll() {
-    if (!frame && watchingInput) frame = requestAnimationFrame(updateNetwork);
-  }
+  function schedule() { if (!frame) frame=requestAnimationFrame(update); }
   function configureMotion() {
-    observers.forEach(observer => observer.disconnect());
-    observers = [];
-    window.removeEventListener('scroll', onScroll);
-    window.removeEventListener('resize', onScroll);
-    cancelAnimationFrame(frame);
-    frame = 0;
-    watchingInput = false;
+    if(observer) observer.disconnect();
+    removeEventListener('scroll',schedule);
+    removeEventListener('resize',schedule);
+    cancelAnimationFrame(frame); frame=0;
     document.documentElement.classList.remove('motion-enabled');
-    section.style.removeProperty('--converge');
-    if (reducedMotion.matches || !('IntersectionObserver' in window)) return;
-
-    const revealObserver = new IntersectionObserver(entries => {
+    if(reducedMotion.matches || !('IntersectionObserver' in window)) return;
+    observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
+        if(entry.isIntersecting) {
           entry.target.classList.add('is-visible');
-          revealObserver.unobserve(entry.target);
+          observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.08 });
-    const wordObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => entry.target.classList.toggle('is-active', entry.isIntersecting));
-    }, { rootMargin: '-18% 0px -18% 0px', threshold: 0 });
-    const sectionObserver = new IntersectionObserver(entries => {
-      watchingInput = entries[0].isIntersecting;
-      if (watchingInput) onScroll();
-    });
+    },{threshold:.08});
+    document.querySelectorAll('.reveal:not(.process-list li), .pm-principles p').forEach(el=>observer.observe(el));
     document.documentElement.classList.add('motion-enabled');
-    document.querySelectorAll('.reveal').forEach(element => revealObserver.observe(element));
-    document.querySelectorAll('.input-word').forEach(element => wordObserver.observe(element));
-    sectionObserver.observe(section);
-    observers = [revealObserver, wordObserver, sectionObserver];
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
+    addEventListener('scroll',schedule,{passive:true});
+    addEventListener('resize',schedule,{passive:true});
+    schedule();
   }
   configureMotion();
-  if (reducedMotion.addEventListener) reducedMotion.addEventListener('change', configureMotion);
+  if(reducedMotion.addEventListener) reducedMotion.addEventListener('change',configureMotion);
 })();
