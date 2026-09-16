@@ -5,8 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>L.C.DESIGN | Design & Engineering</title>
+
   <meta name="description"
-        content="L.C.DESIGNは、設計・デザイン・技術を通じて、よりよい未来をかたちにするデザインカンパニーです。">
+        content="L.C.DESIGNは、デザイン・設計・モビリティ・AIを横断し、よりよい未来をかたちにするデザイン＆エンジニアリングスタジオです。">
+
+  <meta name="theme-color" content="#f6f4f1">
 
   <style>
     :root {
@@ -17,6 +20,7 @@
       --line: #d8d3cd;
       --accent: #a89b90;
       --white: #ffffff;
+      --dark: #2f2e2c;
     }
 
     * {
@@ -56,17 +60,17 @@
       left: 0;
       width: 100%;
       z-index: 100;
-      padding: 24px 6vw;
+      padding: 23px 6vw;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(246, 244, 241, 0.90);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(216, 211, 205, 0.55);
+      background: rgba(246, 244, 241, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(216, 211, 205, 0.48);
     }
 
     .brand {
-      font-size: 20px;
+      font-size: 19px;
       letter-spacing: 0.28em;
       font-weight: 400;
       white-space: nowrap;
@@ -75,13 +79,13 @@
     nav {
       display: flex;
       gap: 30px;
-      font-size: 12px;
+      font-size: 11px;
       letter-spacing: 0.18em;
     }
 
     nav a {
-      opacity: 0.7;
-      transition: 0.3s;
+      opacity: 0.55;
+      transition: opacity .25s ease;
     }
 
     nav a:hover {
@@ -110,12 +114,13 @@
       border: 1px solid var(--line);
       border-radius: 50%;
       opacity: 0.75;
+      pointer-events: none;
     }
 
     .hero-small {
       color: var(--sub);
-      font-size: 12px;
-      letter-spacing: 0.28em;
+      font-size: 11px;
+      letter-spacing: 0.30em;
       margin-bottom: 28px;
     }
 
@@ -140,9 +145,29 @@
 
     .hero-sub {
       margin-top: 28px;
-      max-width: 650px;
+      max-width: 670px;
       color: var(--sub);
       font-size: 14px;
+    }
+
+    .hero-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 42px;
+      width: fit-content;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      border-bottom: 1px solid var(--text);
+      padding-bottom: 8px;
+    }
+
+    .hero-link span {
+      transition: transform .25s ease;
+    }
+
+    .hero-link:hover span {
+      transform: translateX(5px);
     }
 
     /* COMMON */
@@ -152,7 +177,7 @@
     }
 
     .section-title {
-      font-size: 12px;
+      font-size: 11px;
       color: var(--sub);
       letter-spacing: 0.28em;
       margin-bottom: 50px;
@@ -179,7 +204,7 @@
 
     .about-text {
       font-size: 15px;
-      line-height: 2.2;
+      line-height: 2.25;
     }
 
     .about-text p + p {
@@ -201,7 +226,7 @@
     .field {
       padding: 42px 26px 50px 0;
       border-bottom: 1px solid var(--line);
-      min-height: 180px;
+      min-height: 220px;
     }
 
     .field + .field {
@@ -216,15 +241,104 @@
     }
 
     .field h3 {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 400;
       letter-spacing: 0.12em;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     .field p {
       color: var(--sub);
       font-size: 12px;
+      line-height: 2;
+    }
+
+    /* WORKS */
+
+    .works {
+      background: var(--white);
+    }
+
+    .works-header {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 9vw;
+      margin-bottom: 65px;
+    }
+
+    .works-heading {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 300;
+      line-height: 1.55;
+    }
+
+    .works-intro {
+      color: var(--sub);
+      font-size: 14px;
+      line-height: 2.1;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .work-card {
+      background: var(--white);
+      padding: 48px;
+      min-height: 320px;
+      transition:
+        background .3s ease,
+        transform .3s ease;
+    }
+
+    .work-card:hover {
+      background: #faf9f7;
+    }
+
+    .work-index {
+      color: var(--accent);
+      font-size: 10px;
+      letter-spacing: .18em;
+      margin-bottom: 65px;
+    }
+
+    .work-card h3 {
+      font-size: clamp(22px, 2.5vw, 34px);
+      font-weight: 300;
+      line-height: 1.45;
+      margin-bottom: 18px;
+    }
+
+    .work-card p {
+      color: var(--sub);
+      font-size: 13px;
+      line-height: 2;
+      max-width: 520px;
+    }
+
+    .work-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 28px;
+    }
+
+    .work-tag {
+      border: 1px solid var(--line);
+      padding: 6px 10px;
+      font-size: 9px;
+      letter-spacing: .12em;
+      color: var(--sub);
+    }
+
+    .works-note {
+      margin-top: 28px;
+      color: var(--sub);
+      font-size: 10px;
     }
 
     /* PHILOSOPHY */
@@ -250,12 +364,42 @@
     .philosophy p {
       max-width: 680px;
       font-size: 14px;
+      line-height: 2.1;
+    }
+
+    /* PROFILE */
+
+    .profile {
+      background: var(--bg);
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 9vw;
+    }
+
+    .profile-name {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 300;
+      margin-bottom: 8px;
+    }
+
+    .profile-role {
+      color: var(--sub);
+      font-size: 11px;
+      letter-spacing: .16em;
+    }
+
+    .profile-text {
+      font-size: 14px;
+      line-height: 2.2;
     }
 
     /* CONTACT */
 
     .contact {
-      background: var(--text);
+      background: var(--dark);
       color: var(--white);
     }
 
@@ -268,6 +412,15 @@
       font-weight: 300;
       letter-spacing: 0.08em;
       margin-bottom: 60px;
+      line-height: 1.3;
+    }
+
+    .contact-copy {
+      color: #c7c1bb;
+      max-width: 700px;
+      font-size: 14px;
+      margin-bottom: 50px;
+      line-height: 2.1;
     }
 
     .contact-grid {
@@ -280,7 +433,7 @@
 
     .contact-label {
       color: #aaa49e;
-      font-size: 11px;
+      font-size: 10px;
       letter-spacing: 0.18em;
       margin-bottom: 8px;
     }
@@ -290,10 +443,28 @@
       margin-bottom: 28px;
     }
 
+    .contact-mail {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 25px;
+      border-bottom: 1px solid #bbb5af;
+      padding-bottom: 8px;
+      font-size: 13px;
+    }
+
+    .contact-mail span {
+      transition: transform .25s ease;
+    }
+
+    .contact-mail:hover span {
+      transform: translateX(5px);
+    }
+
     /* FOOTER */
 
     footer {
-      background: var(--text);
+      background: var(--dark);
       color: #8e8984;
       padding: 25px 8vw 50px;
       font-size: 10px;
@@ -305,17 +476,33 @@
 
     /* MOBILE */
 
+    @media (max-width: 900px) {
+      .field-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .field:nth-child(3) {
+        border-left: none;
+      }
+    }
+
     @media (max-width: 800px) {
 
       header {
-        padding: 20px 6vw;
+        padding: 18px 6vw;
       }
 
       .brand {
-        font-size: 15px;
+        font-size: 14px;
       }
 
       nav {
+        gap: 14px;
+        font-size: 9px;
+      }
+
+      nav a:nth-child(2),
+      nav a:nth-child(3) {
         display: none;
       }
 
@@ -325,7 +512,7 @@
       }
 
       h1 {
-        letter-spacing: 0.1em;
+        letter-spacing: 0.09em;
       }
 
       section {
@@ -333,17 +520,24 @@
       }
 
       .about-grid,
+      .works-header,
+      .profile-grid,
       .contact-grid {
         grid-template-columns: 1fr;
         gap: 55px;
       }
 
-      .field-grid {
-        grid-template-columns: 1fr 1fr;
+      .work-grid {
+        grid-template-columns: 1fr;
       }
 
-      .field:nth-child(3) {
-        border-left: none;
+      .work-card {
+        min-height: auto;
+        padding: 36px 28px;
+      }
+
+      .work-index {
+        margin-bottom: 42px;
       }
 
       footer {
@@ -366,6 +560,14 @@
       .hero-copy {
         font-size: 20px;
       }
+
+      .hero {
+        min-height: 92vh;
+      }
+
+      .contact-title {
+        letter-spacing: .04em;
+      }
     }
   </style>
 </head>
@@ -378,6 +580,7 @@
   <nav>
     <a href="#about">ABOUT</a>
     <a href="#fields">FIELDS</a>
+    <a href="#works">WORKS</a>
     <a href="#contact">CONTACT</a>
   </nav>
 </header>
@@ -399,9 +602,14 @@
     </div>
 
     <p class="hero-sub">
-      デザイン、設計、技術。<br>
-      領域を越えて考え、本質から新しい価値を創造します。
+      デザイン、設計、モビリティ、AI。<br>
+      領域を越えて考え、アイデアを技術で実装し、
+      新しい価値と体験を生み出します。
     </p>
+
+    <a class="hero-link" href="#works">
+      SELECTED WORKS <span>→</span>
+    </a>
 
   </section>
 
@@ -425,14 +633,15 @@
         </p>
 
         <p>
-          製品、空間、サービス、システム。
-          その目的を理解し、構造を考え、設計し、
+          製品、空間、モビリティ、サービス、システム。
+          目的や課題を捉え、構造を考え、設計し、
           人にとってより良い体験へとつなげていくこと。
         </p>
 
         <p>
-          私たちは、設計とデザインそのものに妥協せず、
-          常により高い水準を目指します。
+          デザインとエンジニアリングを分断せず、
+          構想から設計、試作、デジタル技術まで横断しながら、
+          アイデアを実際に機能するかたちへ変えていきます。
         </p>
 
       </div>
@@ -451,28 +660,167 @@
       <div class="field">
         <div class="field-number">01</div>
         <h3>DESIGN</h3>
-        <p>製品・空間・体験・ビジュアルのデザイン</p>
+        <p>
+          製品・空間・体験・サービスを横断した
+          コンセプト設計とデザイン。
+        </p>
       </div>
 
       <div class="field">
         <div class="field-number">02</div>
         <h3>ENGINEERING</h3>
-        <p>設計・3D・デジタル技術による具現化</p>
+        <p>
+          3D設計、CAD、試作、構造検討、
+          デジタルエンジニアリングによる具現化。
+        </p>
       </div>
 
       <div class="field">
         <div class="field-number">03</div>
         <h3>MOBILITY</h3>
-        <p>移動空間と新しいモビリティ体験の創造</p>
+        <p>
+          MaaS、移動空間、車両体験、
+          モビリティサービスの企画・設計。
+        </p>
       </div>
 
       <div class="field">
         <div class="field-number">04</div>
-        <h3>AI</h3>
-        <p>AIとデジタル技術による新しい価値の創出</p>
+        <h3>AI / DIGITAL</h3>
+        <p>
+          AI、ソフトウェア、自動化技術を活用した
+          業務・体験・開発プロセスの革新。
+        </p>
       </div>
 
     </div>
+
+  </section>
+
+
+  <section id="works" class="works">
+
+    <div class="section-title">SELECTED WORKS</div>
+
+    <div class="works-header">
+
+      <h2 class="works-heading">
+        Ideas become<br>
+        real experiences.
+      </h2>
+
+      <p class="works-intro">
+        モビリティからAI、3D設計まで。
+        L.C.DESIGNは、構想だけで終わらせず、
+        設計・技術・プロトタイピングを通じて
+        実際に使える価値へと変換します。
+      </p>
+
+    </div>
+
+
+    <div class="work-grid">
+
+      <article class="work-card">
+
+        <div class="work-index">01 / MOBILITY</div>
+
+        <h3>
+          Mobility Experience<br>
+          Design
+        </h3>
+
+        <p>
+          車両空間とデジタルコンテンツを組み合わせ、
+          移動そのものを新しい体験へ変える
+          モビリティサービスの企画・設計。
+        </p>
+
+        <div class="work-tags">
+          <span class="work-tag">MaaS</span>
+          <span class="work-tag">UX</span>
+          <span class="work-tag">SPACE DESIGN</span>
+        </div>
+
+      </article>
+
+
+      <article class="work-card">
+
+        <div class="work-index">02 / LIVING MOBILITY</div>
+
+        <h3>
+          Healthcare &<br>
+          Living Mobility
+        </h3>
+
+        <p>
+          医療・健康・暮らしのサービスを
+          モビリティ空間へ統合。
+          多用途に変化する移動空間とサービス設計を検討します。
+        </p>
+
+        <div class="work-tags">
+          <span class="work-tag">HEALTHCARE</span>
+          <span class="work-tag">MOBILITY</span>
+          <span class="work-tag">SERVICE DESIGN</span>
+        </div>
+
+      </article>
+
+
+      <article class="work-card">
+
+        <div class="work-index">03 / ENGINEERING</div>
+
+        <h3>
+          Digital Engineering<br>
+          & Automation
+        </h3>
+
+        <p>
+          3D CAD、設計自動化、図面生成など、
+          デジタル技術を使って設計プロセスそのものを
+          より速く、より正確にします。
+        </p>
+
+        <div class="work-tags">
+          <span class="work-tag">3D CAD</span>
+          <span class="work-tag">AUTOMATION</span>
+          <span class="work-tag">PROTOTYPING</span>
+        </div>
+
+      </article>
+
+
+      <article class="work-card">
+
+        <div class="work-index">04 / AI</div>
+
+        <h3>
+          AI & Digital<br>
+          Tools
+        </h3>
+
+        <p>
+          AIとソフトウェアを活用し、
+          設計・業務・情報整理・ユーザー体験を支援する
+          新しいデジタルツールを開発します。
+        </p>
+
+        <div class="work-tags">
+          <span class="work-tag">AI</span>
+          <span class="work-tag">SOFTWARE</span>
+          <span class="work-tag">WORKFLOW</span>
+        </div>
+
+      </article>
+
+    </div>
+
+    <p class="works-note">
+      ※ 一部プロジェクトは機密保持のため概要のみ掲載しています。
+    </p>
 
   </section>
 
@@ -492,8 +840,39 @@
       <p>
         技術だけでも、造形だけでもない。<br>
         人・技術・空間・社会をつなぎ、
-        新しい可能性をかたちにしていきます。
+        新しい可能性を実装できるかたちにしていきます。
       </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="profile">
+
+    <div class="section-title">PROFILE</div>
+
+    <div class="profile-grid">
+
+      <div>
+        <h2 class="profile-name">
+          Daiki Haraguchi
+        </h2>
+
+        <div class="profile-role">
+          FOUNDER / DESIGN ENGINEER
+        </div>
+      </div>
+
+      <div class="profile-text">
+        デザインとエンジニアリングの両視点から、
+        モビリティ、3D設計、デジタル技術、
+        AIを横断したプロジェクトに取り組んでいます。
+        <br><br>
+        「考える」だけで終わらず、
+        実際につくり、試し、改善するところまでを
+        デザインの領域として捉えています。
+      </div>
 
     </div>
 
@@ -509,40 +888,59 @@
       something better.
     </h2>
 
+    <p class="contact-copy">
+      デザイン、設計、モビリティ、AI、
+      新規サービス開発、共同プロジェクトなど、
+      ご相談・協業についてお気軽にお問い合わせください。
+    </p>
+
     <div class="contact-grid">
 
       <div>
 
         <div class="contact-label">NAME</div>
+
         <div class="contact-value">
           原口 大輝 / Daiki Haraguchi
         </div>
 
-        <div class="contact-label">TITLE</div>
+        <div class="contact-label">ROLE</div>
+
         <div class="contact-value">
-          CEO / Design Engineer
+          Founder / Design Engineer
         </div>
 
       </div>
 
+
       <div>
 
         <div class="contact-label">E-MAIL</div>
+
         <div class="contact-value">
           <a href="mailto:haraguchi@lcdesign.page">
             haraguchi@lcdesign.page
           </a>
         </div>
 
-        <div class="contact-label">ADDRESS</div>
+        <div class="contact-label">LOCATION</div>
+
         <div class="contact-value">
-          愛知県豊田市柿本町6丁目25番地36
+          Toyota, Aichi, Japan
         </div>
 
         <div class="contact-label">WEB</div>
+
         <div class="contact-value">
-          lcdesign.page
+          <a href="https://lcdesign.page">
+            lcdesign.page
+          </a>
         </div>
+
+        <a class="contact-mail"
+           href="mailto:haraguchi@lcdesign.page">
+          CONTACT BY E-MAIL <span>→</span>
+        </a>
 
       </div>
 
