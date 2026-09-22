@@ -22,3 +22,68 @@
 @media(max-width:1000px){.profile-photo{min-height:490px}.header nav{gap:15px}.motion-toggle{margin-right:20px}}
 @media(max-width:700px){.header nav{gap:8px}.motion-toggle{margin-right:0}.profile{padding-top:65px;padding-bottom:65px}.profile .section-meta{font-size:8px}.profile .section-meta span:last-child{display:none}.profile-layout{grid-template-columns:1fr;gap:35px}.profile-photo{min-height:0;aspect-ratio:1/1.05;max-height:560px}.profile-name{font-size:clamp(42px,12vw,76px)}.profile-lead{font-size:23px;margin-top:28px}.profile-bio{font-size:13px}.profile-expertise{grid-template-columns:1fr;gap:30px;margin-top:55px}.profile-skills dt{font-size:18px}.profile-skills dd{margin-left:0}.profile-expertise-title h3{font-size:26px}}
 @media print{.profile{background:white;color:black}.profile-bio,.profile-skills dd{color:#333}.profile-photo{min-height:0;max-height:400px}.profile-name{font-size:48px}}
+
+/* v9: keep the published cinematic design while updating the story. */
+html,body{overflow-x:clip;text-rendering:geometricPrecision}
+.cinematic .intro{height:440svh}
+.hero-message h2{font-size:clamp(50px,7.5vw,112px);font-weight:500;line-height:1.16;letter-spacing:-.055em}
+.hero-message em{display:inline-block;padding-right:.07em}
+.brand-scene h2{font-size:clamp(54px,12vw,190px);letter-spacing:-.067em}
+.cinematic .pm-cinema{height:760svh}
+.pm-opening h2{font-size:clamp(46px,6vw,96px);line-height:1.25}
+.pm-scene .pm-text h3{max-width:100%;overflow:visible}
+.pm-business .pm-number{color:rgba(185,230,233,.13);-webkit-text-stroke:1px #9bd9e5}
+.pm-business .pm-text h3{color:#b9e6e9}
+.pm-timeline{overflow:visible}
+
+.network-cinema{position:relative;background:#050708}
+.network-universe{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.95}
+.network-statement{width:100%;text-align:center;z-index:2}
+.network-statement h2{font-size:clamp(44px,6.35vw,92px);font-weight:500;line-height:1.21;letter-spacing:-.055em;text-wrap:balance}
+.network-statement h2 em{color:#b9e6e9;display:inline-block;padding-right:.08em}
+.network-statement .eyebrow{position:relative;z-index:2}
+.cinematic .network-cinema{height:340svh}
+.cinematic .network-cinema .stage{position:sticky;top:0;height:100svh;min-height:540px;padding:0;overflow:hidden}
+.cinematic .network-statement{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:72px var(--gutter);opacity:0;pointer-events:none;will-change:opacity,transform}
+.cinematic .network-cinema .stage-top{top:44px}
+
+.manifesto{display:block;height:auto;min-height:100svh;padding:0;background:#edf0ed;color:#171f21;overflow:visible}
+.manifesto-stage{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;padding:50px var(--gutter) 42px}
+.manifesto-top,.manifesto-bottom{color:inherit;opacity:.62!important}
+.manifesto-center{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1}
+.manifesto-symbol{margin:0 0 26px;color:inherit;opacity:.55!important}
+.manifesto h2{font-size:clamp(40px,6.1vw,92px);line-height:1.16;letter-spacing:-.055em;font-weight:500}
+.manifesto-line{display:block;white-space:nowrap}
+.manifesto-rule{width:min(52vw,500px);height:1px;margin:31px auto 0;background:currentColor;opacity:.5!important;transform-origin:center}
+.manifesto p{margin-top:29px;color:inherit;opacity:.7!important}
+.manifesto-brand{margin-top:22px;color:inherit}
+.cinematic .manifesto{height:285svh}
+.cinematic .manifesto-stage{position:sticky;top:0;height:100svh;min-height:540px}
+.cinematic .manifesto .manifesto-line{opacity:var(--line-opacity,0)!important;transform:translateY(var(--line-shift,72px))!important}
+.cinematic .manifesto .manifesto-rule{transform:scaleX(var(--rule-progress,0))!important}
+.cinematic .manifesto .manifesto-brand{opacity:var(--brand-opacity,0)!important}
+.cinematic .manifesto .manifesto-symbol{opacity:calc(.45 * var(--brand-opacity,0))!important}
+
+@media(max-width:700px){
+  .cinematic .intro{height:390svh}
+  .hero-message h2{font-size:clamp(39px,10.3vw,60px)}
+  .brand-scene h2{font-size:12.5vw;letter-spacing:-.075em}
+  .cinematic .pm-cinema{height:690svh}
+  .pm-opening h2{font-size:clamp(37px,9vw,58px)}
+  .pm-scene .pm-text h3{font-size:clamp(36px,10vw,52px)}
+  .pm-scene:nth-child(2) .pm-text h3{font-size:clamp(32px,8.5vw,48px)}
+  .pm-timeline{font-size:7px;gap:2px}
+  .pm-timeline span{white-space:nowrap}
+  .pm-timeline small{font-size:7px}
+  .cinematic .network-cinema{height:300svh}
+  .network-statement h2{font-size:clamp(20px,6.5vw,36px);line-height:1.4}
+  .network-statement h2 em{padding-right:0}
+  .cinematic .network-statement{padding:76px 18px}
+  .manifesto-stage{padding:40px 18px 35px}
+  .manifesto h2{font-size:clamp(30px,7.6vw,49px);line-height:1.26}
+  .manifesto p{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-message,.brand-scene,.network-statement{opacity:1!important;transform:none!important;visibility:visible!important}
+  .manifesto-line,.manifesto-rule,.manifesto-brand{opacity:1!important;transform:none!important}
+}
